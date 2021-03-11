@@ -37,8 +37,9 @@
 
     <div id="texts">
       <p id="p_texts"> 
+        <br><br><br> As palavras/dados/textos obtidos foram: <br><br><br>
         <% @result.blocks.size.times do |i| %>
-        <%= @result.blocks[i].text %> |
+        <%= @result.blocks[i].text %> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
         <% end %>
       </p>
     </div>
@@ -54,7 +55,10 @@
         }
 
         if($('input[name=text]').is(":checked")){
-          $('#p_texts').css
+          $('#texts').css("display", "block")
+        }
+        else{
+          $('#texts').css("display", "none")
         }
       })
 

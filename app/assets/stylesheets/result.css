@@ -13,3 +13,7 @@ label{
 #qt_pages{
   margin: 2% 0;
 }
+
+#texts{
+  display: none;
+}
