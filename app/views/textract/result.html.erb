@@ -17,12 +17,12 @@
         Textos
         <input type="checkbox" name="text" value="text_atv"> 
       </label>
-
+      <!--
       <label>
         Página do texto
         <input type="checkbox" name="page_text" value="page_text_atv"> 
       </label>
-
+      -->
       <label>
         Conteúdo root
         <input type="checkbox" name="root" value="root_atv"> 
@@ -37,10 +37,25 @@
 
     <div id="texts">
       <p id="p_texts"> 
-        <br><br><br> As palavras/dados/textos obtidos foram: <br><br><br>
+        <br> As palavras/dados/textos obtidos foram: <br><br><br>
         <% @result.blocks.size.times do |i| %>
-        <%= @result.blocks[i].text %> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+        <%= @result.blocks[i].text%> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
         <% end %>
+      </p>
+    </div>
+    <!--
+    <div id="texts_num_page">
+      <p id="p_texts_num_page"> 
+        <br> As palavras/dados/textos obtidos foram: <br><br><br>
+        <% @result.blocks.size.times do |i| %>
+        <%= @result.blocks[i].text %> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+        <% end %>
+      </p>
+    </div>
+    -->
+    <div id="root">
+      <p>
+        <%= @result %>
       </p>
     </div>
 
@@ -60,8 +75,23 @@
         else{
           $('#texts').css("display", "none")
         }
+        /*
+        if($('input[name=page_text]').is(":checked")){
+          $('#texts').css("display", "none")
+          $('#texts_num_page').css("display", "block")
+        }
+        else{
+          $('#texts').css("display", "block")
+          $('#texts_num_page').css("display", "block")
+        }
+        */
+        if($('input[name=root]').is(":checked")){
+          $('#root').css("display", "block")
+        }
+        else{
+          $('#root').css("display", "none")
+        }
       })
-
     </script>
 
   </div>

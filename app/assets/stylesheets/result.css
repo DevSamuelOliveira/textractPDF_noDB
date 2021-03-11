@@ -17,3 +17,11 @@ label{
 #texts{
   display: none;
 }
+
+#page{
+  display: none;
+}
+
+#root{
+  display: none;
+}
