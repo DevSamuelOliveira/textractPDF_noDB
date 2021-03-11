@@ -1,40 +1,53 @@
-<style>
-  #container{
-    margin: 3% 4%;
-  }
-
-  #resultado{
-    margin: 2% 0;
-  }
-
-  label{
-    padding: 0 1%;
-  }
-</style>
+<link rel="stylesheet" href="assets/result.css">
 
 <div id="container">
   <div>
-    <p class="lead"> Os dados foram análisados com sucesso, selecione os filtros desejados.</p>
-    <form>
-
-      <label>
-        Textos
-        <input type="checkbox" name="text"> 
-      </label>
+    <p class="lead"> Os dados do arquivo "<%= @name_file %>" foram analisados com sucesso, selecione os filtros desejados.</p>
+    <form method="POST">
 
       <label>
         Quantidade de páginas
-        <input type="checkbox" name="qt_pages"> 
+        <input type="checkbox" name="qt_pages" value="qt_pages_atv"> 
+      </label>
+
+      <label>
+        Textos
+        <input type="checkbox" name="text" value="text_atv"> 
       </label>
 
       <label>
         Página do texto
-        <input type="checkbox" name="page_text"> 
+        <input type="checkbox" name="page_text" value="page_text_atv"> 
       </label>
 
-      <input type="submit" value="Filtrar">
+      <label>
+        Conteúdo root
+        <input type="checkbox" name="root" value="root_atv"> 
+      </label>
+
+      <input type="button" value="Filtrar" id="enviar">
     </form>
-    <p class ="lead" id="resultado"> <%= @resposta_get %> </p>
+
+    <div id="qt_pages">
+      <p id="p_qt_pages"></p>
+    </div>
+
+    <div>
+
+    </div>
+
+    <script>
+      $('#enviar').click(function(){
+        if($('input[name=qt_pages]').is(":checked")){
+          $('#p_qt_pages').html("A quantidade de páginas do arquivo é: <%= @result.document_metadata.pages %>")
+          $('#qt_pages').css("display", "block")
+        }
+        else{
+          $('#qt_pages').css("display", "none")
+        }
+      })
+    </script>
+
   </div>
 </div>
 

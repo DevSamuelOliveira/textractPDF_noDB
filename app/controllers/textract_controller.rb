@@ -7,6 +7,7 @@ class TextractController < ApplicationController
   def index
 
     arquivo = params[:arquivo]
+    @name_file = arquivo.original_filename
 
     s3 = Aws::S3::Resource.new(
       region: ENV['REGION'],
@@ -34,16 +35,15 @@ class TextractController < ApplicationController
     })
     
     begin
-      @resposta_get = client.get_document_analysis({ #analisa o job_id e retorna os dados
+      @result = client.get_document_analysis({ #analisa o job_id e retorna os dados
         job_id: resposta[:job_id], # required
       })
-    end while(@resposta_get[:job_status] == "IN_PROGRESS") #Fica lendo os dados até ele retorna que terminou
-    puts "O resultado de textos foi: #{@resposta_get.blocks[1].text}"
+    end while(@result[:job_status] == "IN_PROGRESS") #Fica lendo os dados até ele retorna que terminou
     render :result
   end
 
   def result
-    if @resposta_get != nil
+    if @result != nil
       redirect_to "/result_textract"
     end
   end
