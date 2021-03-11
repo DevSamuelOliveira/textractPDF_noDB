@@ -1,0 +1,40 @@
+<style>
+  #container{
+    margin: 3% 4%;
+  }
+
+  #resultado{
+    margin: 2% 0;
+  }
+
+  label{
+    padding: 0 1%;
+  }
+</style>
+
+<div id="container">
+  <div>
+    <p class="lead"> Os dados foram análisados com sucesso, selecione os filtros desejados.</p>
+    <form>
+
+      <label>
+        Textos
+        <input type="checkbox" name="text"> 
+      </label>
+
+      <label>
+        Quantidade de páginas
+        <input type="checkbox" name="qt_pages"> 
+      </label>
+
+      <label>
+        Página do texto
+        <input type="checkbox" name="page_text"> 
+      </label>
+
+      <input type="submit" value="Filtrar">
+    </form>
+    <p class ="lead" id="resultado"> <%= @resposta_get %> </p>
+  </div>
+</div>
+

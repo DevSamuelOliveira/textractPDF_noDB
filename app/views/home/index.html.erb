@@ -1,59 +1,18 @@
-<style>
+<div>
+	<form name="formulario" action="result_textract" method="post" enctype="multipart/form-data">
+		<fieldset>
+			<legend id="legend">Extração/Análise de dados em arquivo PDF</legend>
+			<label for="arquivo" id="label"> Insira o aquivo PDF </label>
 
-body, html{
-    width: 100%;
-}
-
-#title, #container-form{
-    display: flex;
-    justify-content: center;
-    padding: 1%;
-}
-
-.navbar a{
-    margin-left: 5%;
-}
-
-#title{
-    margin-top: 1%;
-    color: gray;
-    width: 100%;
-}
-
-#resultado{
-    margin-left: 15%;
-    color: #gray;
-    margin-top: 1%;
-    display: flex;
-    justify-content: center;
-    width: 70%;
-}
-
-</style>
-
-<div id="container">
-    <div>
-        <nav class="navbar navbar-dark bg-dark">
-            <a class="navbar-brand" href=""> Extração de dados PDF AWS Textract </a>
-        </nav>
-    </nav>
-
-    <div id="title">
-        <h5 class="display-6"> Selecione um arquivo para coleta de dados</h5>
-    </div>
-
-    <div id="container-form">
-        <form action="upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="arquivo" required/>
-            <input type="submit" value="Enviar"/>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        </form>
-    </div>
-
-    <div id="resultado">
-        <p class="lead"><%= @resposta_get %></p>
-    </div>
-
-    
-    
+			<input type="file" name="arquivo" id="arquivo">
+		</fieldset>
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	</form>
 </div>
+
+<script>
+	$('input').change(function () {
+		document.formulario.submit();
+		alert("Documento enviado com sucesso para análise aguarde...")
+	})
+</script>
