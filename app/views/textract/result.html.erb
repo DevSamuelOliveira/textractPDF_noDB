@@ -2,7 +2,10 @@
 
 <div id="container">
   <div>
-    <p class="lead"> Os dados do arquivo "<%= @name_file %>" foram analisados com sucesso, selecione os filtros desejados.</p>
+    <p class="lead"> Os dados do arquivo "<%= @name_file %>" foram analisados com sucesso, selecione os filtros desejados.
+    os textos recuperados seram separados por "|" 
+    </p>
+
     <form method="POST">
 
       <label>
@@ -32,8 +35,12 @@
       <p id="p_qt_pages"></p>
     </div>
 
-    <div>
-
+    <div id="texts">
+      <p id="p_texts"> 
+        <% @result.blocks.size.times do |i| %>
+        <%= @result.blocks[i].text %> |
+        <% end %>
+      </p>
     </div>
 
     <script>
@@ -45,7 +52,12 @@
         else{
           $('#qt_pages').css("display", "none")
         }
+
+        if($('input[name=text]').is(":checked")){
+          $('#p_texts').css
+        }
       })
+
     </script>
 
   </div>
